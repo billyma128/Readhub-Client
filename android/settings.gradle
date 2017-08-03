@@ -1,0 +1,3 @@
+rootProject.name = 'ReadhubClient'
+
+include ':app'
