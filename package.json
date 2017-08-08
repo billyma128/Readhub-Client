@@ -4,12 +4,17 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "lint": "./node_modules/.bin/eslint -c .eslintrc --fix *.js",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "pretest": "./node_modules/.bin/eslint -c .eslintrc --fix *.js",
     "test": "jest"
   },
   "dependencies": {
+    "prop-types": "^15.5.10",
     "react": "16.0.0-alpha.12",
-    "react-native": "0.47.1"
+    "react-native": "0.47.1",
+    "react-native-elements": "^0.15.0",
+    "react-native-router-flux": "3.40.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

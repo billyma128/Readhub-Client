@@ -1,0 +1,13 @@
+engines:
+  eslint:
+    enabled: true
+    config:
+      config: "./.eslintrc"
+    checks:
+      import/extensions:
+        enabled: false
+ratings:
+  paths:
+    - "src/*/**.js"
+exclude_paths:
+  - "__test__"

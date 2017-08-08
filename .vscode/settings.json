@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "**/containers/*/*.js": "javascriptreact",
+    "**/components/*/*.js": "javascriptreact"
+  },
+  "editor.snippetSuggestions": "top"
+}
