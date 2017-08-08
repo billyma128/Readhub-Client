@@ -6,7 +6,7 @@ import ReadhubClient from '../src/index';
 
 
 it('renders correctly', () => {
-  const tree = renderer.create(
+  renderer.create(
     <ReadhubClient />,
   );
 });
