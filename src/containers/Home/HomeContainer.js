@@ -1,69 +1,71 @@
 import React, { Component } from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
-import { Card } from 'react-native-elements';
-import Spinkit from 'react-native-spinkit';
-import { Spacer } from '../../components/ui';
-import { Api, Helper } from '../../utils';
-import DescriptionText from './DescriptionText';
+import { StyleSheet, Text } from 'react-native';
+import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import { Helper } from '../../utils';
+import ContentList from './ContentList';
 import { AppColors } from '../../theme';
 
 const styles = StyleSheet.create({
-  container: {
+  tabContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  tabbar: {
+    backgroundColor: AppColors.brand.primary,
+  },
+  tabbarIndicator: {
+    backgroundColor: '#FFF',
+  },
+  tabbarText: {
+    color: '#FFF',
   },
 });
 
 export default class HomeContainer extends Component {
+  static componentName = 'HomeContainer';
   static propTypes = {}
   state = {
-    list: [],
-    loading: false,
+    index: 0,
+    routes: [
+      { key: '1', title: '热门话题' },
+      { key: '2', title: '科技动态' },
+      { key: '3', title: '开发者资讯' },
+    ],
   }
 
-  componentWillMount() {
-    this.setState({ loading: true });
-  }
-
-  componentDidMount() {
-    Api.getTopicList({ lastCursor: '@null', pageSize: 10 })
-      .then(({ data }) => this.setState({ list: data.data, loading: false }));
-  }
+  handleIndexChange = index => this.setState({ index })
 
   navigateToWebView = (url, title) => {
     console.log(title); // eslint-disable-line no-console
     Helper.openLink(url);
   }
 
+  renderHeader = props => (
+    <TabBar
+      {...props}
+      style={styles.tabbar}
+      indicatorStyle={styles.tabbarIndicator}
+      renderLabel={scene => (
+        <Text style={[styles.tabbarText]}>{scene.route.title}</Text>
+      )}
+    />
+  )
+
+  renderScene = SceneMap({
+    1: () => <ContentList onNavigateToWebView={this.navigateToWebView} keyClass={'topic'} />,
+    2: () => <ContentList onNavigateToWebView={this.navigateToWebView} keyClass={'technews'} />,
+    3: () => <ContentList onNavigateToWebView={this.navigateToWebView} keyClass={'news'} />,
+  })
+
   render() {
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <Spinkit
-            style={{ marginBottom: 50 }}
-            isVisible={this.state.loading}
-            type={'ChasingDots'}
-            color={AppColors.brand.primary}
-          />
-        </View>
-        {!this.state.loading ? this.state.list.map(item => (
-          <Card
-            key={item.id}
-            title={item.title}
-            titleStyle={{ textAlign: 'left' }}
-            containerStyle={{ borderWidth: 0, borderColor: 'transparent' }}
-          >
-            <DescriptionText
-              url={item.newsArray[0].mobileUrl}
-              text={item.summary}
-              title={item.newsArray[0].title}
-              onPress={this.navigateToWebView}
-            />
-          </Card>
-        )) : null}
-        <Spacer size={30} />
-      </ScrollView>
+      <TabViewAnimated
+        lazy
+        style={[styles.tabContainer]}
+        navigationState={this.state}
+        renderScene={this.renderScene}
+        renderHeader={this.renderHeader}
+        onIndexChange={this.handleIndexChange}
+      />
     );
   }
 }
