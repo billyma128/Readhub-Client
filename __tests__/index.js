@@ -6,7 +6,8 @@ import ReadhubClient from '../src/index';
 
 
 it('renders correctly', () => {
-  renderer.create(
+  // eslint-disable-next-line no-unused-vars
+  const tree = renderer.create(
     <ReadhubClient />,
   );
 });

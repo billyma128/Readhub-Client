@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { Actions, Scene } from 'react-native-router-flux';
+import { Icon } from 'react-native-elements';
 import { HomeContainer, SettingsContainer } from '../containers';
 import AppConfig from '../constants/config';
-import { AppSizes, AppStyles } from '../theme';
+import { AppSizes, AppStyles, AppColors } from '../theme';
+import Placeholder from '../components/general/Placeholder';
 
 /* eslint-disable react/prefer-stateless-function */
 
@@ -19,13 +21,21 @@ const navbarPropsTabs = {
 class TabIcon extends React.Component {
   render() {
     return (
-      <Text style={{ color: this.props.selected ? 'red' : 'black' }}>{this.props.title}</Text>
+      <View>
+        <Icon name={this.props.iconName} type={this.props.iconType} color={this.props.selected ? AppColors.brand.primary : '#767676'} />
+        <Text style={{ color: this.props.selected ? AppColors.brand.primary : '#767676' }}>{this.props.title}</Text>
+      </View>
     );
   }
 }
 
-TabIcon.propTypes = { title: PropTypes.string.isRequired, selected: PropTypes.bool };
-TabIcon.defaultProps = { title: 'Home', selected: false };
+TabIcon.propTypes = {
+  title: PropTypes.string.isRequired,
+  selected: PropTypes.bool,
+  iconName: PropTypes.string.isRequired,
+  iconType: PropTypes.string.isRequired };
+
+TabIcon.defaultProps = { title: 'Home', selected: false, iconName: 'home', iconType: 'ionicon' };
 
 export default Actions.create(
   <Scene key="root" {...AppConfig.navbarProps}>
@@ -33,17 +43,30 @@ export default Actions.create(
       <Scene
         {...navbarPropsTabs}
         key={'home'}
-        title={'HOME'}
+        title={'Home'}
+        iconName={'md-home'}
+        iconType={'ionicon'}
         icon={TabIcon}
+        rightTitle={'comingsoon'}
+        onRight={() => Actions.comingSoon()}
+        rightButtonTextStyle={AppStyles.navbarTitle}
         component={HomeContainer}
       />
       <Scene
         {...navbarPropsTabs}
         key={'settings'}
         title={'Settings'}
+        iconName={'md-compass'}
+        iconType={'ionicon'}
         icon={TabIcon}
         component={SettingsContainer}
       />
     </Scene>
+    <Scene
+      {...navbarPropsTabs}
+      key={'comingSoon'}
+      title={'Coming Soon'}
+      component={Placeholder}
+    />
   </Scene>,
 );
