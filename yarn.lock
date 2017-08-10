@@ -4118,6 +4118,12 @@ react-native-side-menu@^0.20.1:
   version "0.20.3"
   resolved "http://r.cnpmjs.org/react-native-side-menu/download/react-native-side-menu-0.20.3.tgz#5dffe3e237018360ed081433d505ea454cba9ca4"
 
+react-native-spinkit@^1.1.1:
+  version "1.1.1"
+  resolved "http://r.cnpmjs.org/react-native-spinkit/download/react-native-spinkit-1.1.1.tgz#3ae512f3978bc750b7c02639911e1710750d8539"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-native-tab-navigator@^0.3.3:
   version "0.3.3"
   resolved "http://r.cnpmjs.org/react-native-tab-navigator/download/react-native-tab-navigator-0.3.3.tgz#b222bad21fbe773c8d28f9a0de30ce62b08724d3"
