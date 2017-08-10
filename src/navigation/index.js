@@ -47,9 +47,6 @@ export default Actions.create(
         iconName={'md-home'}
         iconType={'ionicon'}
         icon={TabIcon}
-        rightTitle={'comingsoon'}
-        onRight={() => Actions.comingSoon()}
-        rightButtonTextStyle={AppStyles.navbarTitle}
         component={HomeContainer}
       />
       <Scene
