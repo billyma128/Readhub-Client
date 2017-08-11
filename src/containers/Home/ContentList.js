@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, View, StyleSheet, Text } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
 import Spinkit from 'react-native-spinkit';
 import { Spacer } from '../../components/ui';

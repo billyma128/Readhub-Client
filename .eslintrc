@@ -16,5 +16,8 @@
   "globals": {
     "__DEV__": true,
     "fetch": true
+  },
+  "env": {
+    "jest": true
   }
 }
