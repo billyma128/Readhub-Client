@@ -51,15 +51,14 @@ export default class HomeContainer extends Component {
   )
 
   renderScene = SceneMap({
-    1: () => <ContentList onNavigateToWebView={this.navigateToWebView} keyClass={'topic'} />,
-    2: () => <ContentList onNavigateToWebView={this.navigateToWebView} keyClass={'technews'} />,
-    3: () => <ContentList onNavigateToWebView={this.navigateToWebView} keyClass={'news'} />,
+    1: () => <ContentList onNavigateToWebView={this.navigateToWebView} type={'topic'} />,
+    2: () => <ContentList onNavigateToWebView={this.navigateToWebView} type={'technews'} />,
+    3: () => <ContentList onNavigateToWebView={this.navigateToWebView} type={'news'} />,
   })
 
   render() {
     return (
       <TabViewAnimated
-        lazy
         style={[styles.tabContainer]}
         navigationState={this.state}
         renderScene={this.renderScene}

@@ -1,2 +1,2 @@
 export Helper from './helper';
-export Api from './api';
+export request from './api';

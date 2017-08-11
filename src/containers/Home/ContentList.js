@@ -4,7 +4,7 @@ import { ScrollView, View, StyleSheet, Text } from 'react-native';
 import { Card } from 'react-native-elements';
 import Spinkit from 'react-native-spinkit';
 import { Spacer } from '../../components/ui';
-import { Api } from '../../utils';
+import { request } from '../../utils';
 import DescriptionText from './DescriptionText';
 import { AppColors } from '../../theme';
 
@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
 export default class ContentList extends PureComponent {
   static propTypes = {
     onNavigateToWebView: PropTypes.func.isRequired,
-    keyClass: PropTypes.string,
+    type: PropTypes.string,
   }
   static defaultProps = {
-    keyClass: 'topic',
+    type: 'topic',
   }
   state = {
     list: [],
@@ -35,15 +35,21 @@ export default class ContentList extends PureComponent {
   }
 
   componentDidMount() {
-    Api.get(this.props.keyClass, { lastCursor: new Date().getTime(), pageSize: 10 })
-      .then(({ data }) => this.setState({ list: data.data, loading: false }))
-      .catch(e => this.setState({ error: e }));
+    return this.getList(new Date().getTime());
+  }
+
+  getList(lastCursor) {
+    return request(`https://api.readhub.me/${this.props.type}?lastCursor=${lastCursor}&pageSize=10`)
+      .then(({ data }) => {
+        this.setState({ list: data.data, loading: false });
+      })
+      .catch(error => console.error(error));  // eslint-disable-line
   }
 
   render() {
     return (
       <ScrollView>
-        <Text>{this.state.error}</Text>
+        {/* <Text>{JSON.stringify(this.state.list, null, 2)}</Text> */}
         <View style={styles.container}>
           <Spinkit
             style={{ marginBottom: 50 }}
@@ -60,9 +66,9 @@ export default class ContentList extends PureComponent {
             containerStyle={{ borderWidth: 0, borderColor: 'transparent' }}
           >
             <DescriptionText
-              url={item.newsArray[0].mobileUrl}
+              url={item.newsArray ? item.newsArray[0].mobileUrl : item.url}
               text={item.summary}
-              title={item.newsArray[0].title}
+              title={item.title}
               onPress={this.props.onNavigateToWebView}
             />
           </Card>

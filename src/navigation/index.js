@@ -33,7 +33,8 @@ TabIcon.propTypes = {
   title: PropTypes.string.isRequired,
   selected: PropTypes.bool,
   iconName: PropTypes.string.isRequired,
-  iconType: PropTypes.string.isRequired };
+  iconType: PropTypes.string.isRequired,
+};
 
 TabIcon.defaultProps = { title: 'Home', selected: false, iconName: 'home', iconType: 'ionicon' };
 
@@ -43,7 +44,7 @@ export default Actions.create(
       <Scene
         {...navbarPropsTabs}
         key={'home'}
-        title={'Home'}
+        title={'Readhub'}
         iconName={'md-home'}
         iconType={'ionicon'}
         icon={TabIcon}
@@ -52,7 +53,7 @@ export default Actions.create(
       <Scene
         {...navbarPropsTabs}
         key={'settings'}
-        title={'Settings'}
+        title={'设置'}
         iconName={'md-compass'}
         iconType={'ionicon'}
         icon={TabIcon}
