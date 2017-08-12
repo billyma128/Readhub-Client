@@ -1,15 +1,22 @@
-jest.mock('request', () =>
-  ({
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    openURL: jest.fn(),
-    canOpenURL: jest.fn(),
-    getInitialURL: jest.fn(),
-  }),
+
+/* global jest fetch */
+
+jest.mock('Linking', () =>
+({
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  openURL: jest.fn(),
+  canOpenURL: jest.fn(),
+  getInitialURL: jest.fn(),
+}),
 );
 
+jest.mock('ScrollView', () => jest.genMockFromModule('ScrollView'));
+
 // Mocking the global.fetch included in React Native
-global.fetch = jest.fn();
+global.fetch = jest.fn(
+  () => new Promise(resolve => resolve(true)),
+);
 
 // Helper to mock a success response (only once)
 fetch.mockResponseSuccess = (body) => {
