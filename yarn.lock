@@ -4063,6 +4063,10 @@ react-devtools-core@2.3.1:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-device-info@^0.11.0:
+  version "0.11.0"
+  resolved "http://r.cnpmjs.org/react-native-device-info/download/react-native-device-info-0.11.0.tgz#e96dd0e3f8a7d7e3022c1f441f51fa912fdc7444"
+
 react-native-elements@^0.15.0:
   version "0.15.0"
   resolved "http://r.cnpmjs.org/react-native-elements/download/react-native-elements-0.15.0.tgz#09ec1e0148de9ea1fd4c74dcee5c4880205c9fbd"

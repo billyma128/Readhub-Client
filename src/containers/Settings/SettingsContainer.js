@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
+import DeviceInfo from 'react-native-device-info';
+import Helper from '../../utils/helper';
 
 export default class SettingsContainer extends Component {
   static propTypes = {}
-  state = {}
+  state = {
+    version: DeviceInfo.getVersion(),
+  }
   render() {
     return (
       <View>
@@ -32,8 +36,15 @@ export default class SettingsContainer extends Component {
         </List>
         <List>
           <ListItem
-            title={'支持开发'}
-            leftIcon={{ name: 'work' }}
+            title={'作者网站'}
+            leftIcon={{ name: 'link' }}
+            onPress={() => Helper.openLink('https://mazhixiong.com')}
+          />
+          <ListItem
+            title={'当前版本'}
+            leftIcon={{ name: 'copyright' }}
+            rightTitle={this.state.version}
+            hideChevron
           />
         </List>
       </View>
