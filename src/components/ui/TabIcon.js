@@ -23,6 +23,6 @@ TabIcon.propTypes = {
   iconType: PropTypes.string.isRequired,
 };
 
-TabIcon.defaultProps = { title: 'Home', selected: false, iconName: 'home', iconType: 'ionicon' };
+TabIcon.defaultProps = { title: 'Home', selected: false, iconName: 'md-home', iconType: 'ionicon' };
 
 export default TabIcon;

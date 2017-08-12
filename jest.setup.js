@@ -13,6 +13,10 @@ jest.mock('Linking', () =>
 
 jest.mock('ScrollView', () => jest.genMockFromModule('ScrollView'));
 
+jest.mock('react-native-device-info', () => ({
+  getVersion: jest.fn(),
+}));
+
 // Mocking the global.fetch included in React Native
 global.fetch = jest.fn(
   () => new Promise(resolve => resolve(true)),
