@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Share } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import DeviceInfo from 'react-native-device-info';
 import Helper from '../../utils/helper';
@@ -20,6 +20,11 @@ export default class SettingsContainer extends Component {
           <ListItem
             title={'分享给好友'}
             leftIcon={{ name: 'group-work' }}
+            onPress={() => Share.share({
+              title: 'Readhub - 科技新闻阅读，每天 3 分钟',
+              message: '每天三分钟的科技新闻聚合阅读',
+              url: 'https://readhub.me',
+            })}
           />
           <ListItem
             title={'觉得不错，给个好评'}
