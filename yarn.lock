@@ -4284,15 +4284,15 @@ react-native-device-info@^0.11.0:
   version "0.11.0"
   resolved "http://r.cnpmjs.org/react-native-device-info/download/react-native-device-info-0.11.0.tgz#e96dd0e3f8a7d7e3022c1f441f51fa912fdc7444"
 
-react-native-elements@^0.15.0:
-  version "0.15.0"
-  resolved "http://r.cnpmjs.org/react-native-elements/download/react-native-elements-0.15.0.tgz#09ec1e0148de9ea1fd4c74dcee5c4880205c9fbd"
+react-native-elements@^0.16.0:
+  version "0.16.0"
+  resolved "http://r.cnpmjs.org/react-native-elements/download/react-native-elements-0.16.0.tgz#933a567d850d2f8ef605fcfb9ab95dfaf27393ce"
   dependencies:
     lodash.isempty "^4.4.0"
     lodash.times "^4.3.2"
     opencollective "^1.0.3"
     prop-types "^15.5.8"
-    react-native-side-menu "^0.20.1"
+    react-native-side-menu "^1.0.2"
     react-native-tab-navigator "^0.3.3"
 
 react-native-experimental-navigation@0.28.x:
@@ -4322,9 +4322,11 @@ react-native-router-flux@3.40.1:
     react-native-tabs "^1.0.9"
     react-static-container "1.0.1"
 
-react-native-side-menu@^0.20.1:
-  version "0.20.3"
-  resolved "http://r.cnpmjs.org/react-native-side-menu/download/react-native-side-menu-0.20.3.tgz#5dffe3e237018360ed081433d505ea454cba9ca4"
+react-native-side-menu@^1.0.2:
+  version "1.0.2"
+  resolved "http://r.cnpmjs.org/react-native-side-menu/download/react-native-side-menu-1.0.2.tgz#863f8bb253b7512c8c62cefc477aecd653383ddb"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-spinkit@^1.1.1:
   version "1.1.1"
