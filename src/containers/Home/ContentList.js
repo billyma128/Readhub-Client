@@ -4,7 +4,7 @@ import { ScrollView, View, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
 import Spinkit from 'react-native-spinkit';
 import { Spacer } from '../../components/ui';
-import { request } from '../../utils';
+import { Api } from '../../utils';
 import DescriptionText from './DescriptionText';
 import { AppColors } from '../../theme';
 
@@ -39,7 +39,7 @@ export default class ContentList extends PureComponent {
   }
 
   getList(lastCursor) {
-    return request(`https://api.readhub.me/${this.props.type}?lastCursor=${lastCursor}&pageSize=10`)
+    return Api.request(`https://api.readhub.me/${this.props.type}?lastCursor=${lastCursor}&pageSize=10`)
       .then(({ data }) => {
         this.setState({ list: data.data, loading: false });
       })
