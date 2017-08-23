@@ -5,6 +5,7 @@ import AppConfig from '../constants/config';
 import { AppSizes, AppStyles } from '../theme';
 import Placeholder from '../components/general/Placeholder';
 import { TabIcon } from '../components/ui';
+import AboutUs from '../containers/Settings/AboutUs';
 
 /* eslint-disable react/prefer-stateless-function */
 
@@ -43,6 +44,13 @@ export default Actions.create(
       key={'comingSoon'}
       title={'Coming Soon'}
       component={Placeholder}
+    />
+    <Scene
+      {...navbarPropsTabs}
+      key={'aboutUs'}
+      duration={0}
+      title={'关于'}
+      component={AboutUs}
     />
   </Scene>,
 );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Share } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import DeviceInfo from 'react-native-device-info';
+import { Actions } from 'react-native-router-flux';
 import Helper from '../../utils/helper';
 
 export default class SettingsContainer extends Component {
@@ -16,6 +17,7 @@ export default class SettingsContainer extends Component {
           <ListItem
             title={'关于'}
             leftIcon={{ name: 'info' }}
+            onPress={Actions.aboutUs}
           />
           <ListItem
             title={'分享给好友'}
