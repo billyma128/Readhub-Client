@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, Platform } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import { Helper } from '../../utils';
 import ContentList from './ContentList';
@@ -59,6 +59,7 @@ export default class HomeContainer extends Component {
   render() {
     return (
       <TabViewAnimated
+        lazy={Platform.OS === 'ios'}
         style={[styles.tabContainer]}
         navigationState={this.state}
         renderScene={this.renderScene}
